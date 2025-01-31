@@ -1,0 +1,27 @@
+The following CSS code snippet demonstrates an uncommon error related to specificity and inheritance:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green;
+}
+
+/* This will result in green, due to specificity */
+#myDiv p {
+  color:purple;
+}
+
+/* But this has even more specificity and is correct*/
+#myDiv > p {
+  color: yellow;
+}
+```
+
+The unexpected behavior arises from the interaction between inheritance, specificity, and the use of the `>` (child combinator). While `#myDiv p` targets paragraphs within the `#myDiv` element and will correctly override the `div p` rule (due to the specificity of IDs), the `#myDiv > p` rule is even more specific because it targets ONLY the direct children `p` elements of the `#myDiv` element. The `>` symbol ensures the inheritance stops right there.
