@@ -1,0 +1,27 @@
+The solution involves understanding how specificity works. The `>` combinator is more specific than just selecting a child element; it only selects *direct* child elements.  The corrected CSS is:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green;
+}
+
+/* This will result in green */
+#myDiv p {
+  color:purple;
+}
+
+/* This will result in yellow because > has higher specificity */
+#myDiv > p {
+  color: yellow;
+}
+
+```
+By understanding this nuance of the child combinator, the CSS behavior becomes predictable and avoids unexpected visual outcomes.
